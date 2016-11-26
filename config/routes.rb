@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   scope "/admin" do
     resources :users
   end
-  #devise_for :admins, :controllers => { :registrations => "admins/registrations" }
 
+  #devise_for :admins, :controllers => { :registrations => "admins/registrations" }
 
   resources :users, only: [:index]
   # get 'users/sign_in'

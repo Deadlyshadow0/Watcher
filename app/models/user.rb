@@ -31,10 +31,24 @@ class User < ActiveRecord::Base
 
 
 validates :username, presence: true, length: {maximum: 255}, uniqueness: { case_sensitive: false }, format: { with: /\A[a-zA-Z0-9]*\z/, message: "may only contain letters and numbers." }
+  
+  def admin?
+   self.role.name == "Admin"
+  end
+
+  def moderator?
+   self.role.name == "Moderator"
+  end
+  
+  def regular?
+   self.role.name == "Regular"
+  end
+
 
   private
 
   def set_default_role
+  	#self.role ||= Role.find_by_name('registered')
     self.role ||= Role.find_by name:"Regular" if self.role.nil?
   end
 
