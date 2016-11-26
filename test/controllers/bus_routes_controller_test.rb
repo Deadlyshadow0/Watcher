@@ -18,7 +18,7 @@ class BusRoutesControllerTest < ActionController::TestCase
 
   test "should create bus_route" do
     assert_difference('BusRoute.count') do
-      post :create, bus_route: { name: @bus_route.name }
+      post :create, bus_route: { name: @bus_route.name, number: @bus_route.number }
     end
 
     assert_redirected_to bus_route_path(assigns(:bus_route))
@@ -35,7 +35,7 @@ class BusRoutesControllerTest < ActionController::TestCase
   end
 
   test "should update bus_route" do
-    patch :update, id: @bus_route, bus_route: { name: @bus_route.name }
+    patch :update, id: @bus_route, bus_route: { name: @bus_route.name, number: @bus_route.number }
     assert_redirected_to bus_route_path(assigns(:bus_route))
   end
 

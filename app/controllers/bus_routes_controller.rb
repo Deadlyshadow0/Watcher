@@ -69,6 +69,6 @@ class BusRoutesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bus_route_params
-      params.require(:bus_route).permit(:name)
+      params.require(:bus_route).permit(:name, :number)
     end
 end

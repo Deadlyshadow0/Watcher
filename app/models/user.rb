@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  belongs_to :role
+  before_create :set_default_role 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          #:validatable, :authentication_keys => [:login]
@@ -27,8 +29,14 @@ class User < ActiveRecord::Base
   end
   end
 
+
 validates :username, presence: true, length: {maximum: 255}, uniqueness: { case_sensitive: false }, format: { with: /\A[a-zA-Z0-9]*\z/, message: "may only contain letters and numbers." }
 
+  private
+
+  def set_default_role
+    self.role ||= Role.find_by_name('registered')
+  end
 
 #     validate :validate_username
 

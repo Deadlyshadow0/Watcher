@@ -1,5 +1,4 @@
 class BusStopsController < ApplicationController
-  #load_and_authorize_resource
   before_action :set_bus_stop, only: [:show, :edit, :update, :destroy]
 
   # GET /bus_stops
@@ -70,6 +69,6 @@ class BusStopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bus_stop_params
-      params.require(:bus_stop).permit(:name)
+      params.require(:bus_stop).permit(:name, :latitude, :longitude)
     end
 end
