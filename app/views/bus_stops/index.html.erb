@@ -1,4 +1,14 @@
-<p id="notice"><%= notice %></p>
+
+<% if user_signed_in? %>
+Signed in as <%= current_user.email %>. Not you?
+<%= link_to "Edit profile", edit_user_registration_path %>
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+<% else %>
+<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+<% end %>
+<% flash.each do |name, msg| %>
+<%= content_tag :div, msg, id: "flash_#{name}" %>
+<% end %>
 
 <h1>Listing Bus Stops</h1>
 
@@ -21,6 +31,8 @@
         <td><%= link_to 'Show', bus_stop %></td>
         <td><%= link_to 'Edit', edit_bus_stop_path(bus_stop) %></td>
         <td><%= link_to 'Destroy', bus_stop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
       </tr>
     <% end %>
   </tbody>
