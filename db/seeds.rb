@@ -14,4 +14,3 @@ u1 = User.create({username: "Sally", email: "sally@example.com", password: "aaaa
 u2 = User.create({username: "Sue", email: "sue@example.com", password: "aaaaaaaa", password_confirmation: "aaaaaaaa", role_id: r2.id})
 u3 = User.create({username: "Kev", email: "kev@example.com", password: "aaaaaaaa", password_confirmation: "aaaaaaaa", role_id: r2.id})
 u4 = User.create({username: "Jack", email: "jack@example.com", password: "aaaaaaaa", password_confirmation: "aaaaaaaa", role_id: r3.id})
-

@@ -35,7 +35,7 @@ validates :username, presence: true, length: {maximum: 255}, uniqueness: { case_
   private
 
   def set_default_role
-    self.role ||= Role.find_by_name('registered')
+    self.role ||= Role.find_by name:"Regular" if self.role.nil?
   end
 
 #     validate :validate_username
