@@ -1,4 +1,5 @@
 class BusStopsController < ApplicationController
+  #load_and_authorize_resource
   before_action :set_bus_stop, only: [:show, :edit, :update, :destroy]
 
   # GET /bus_stops

@@ -29,8 +29,17 @@ Signed in as <%= current_user.email %>. Not you?
         <td><%= bus_stop.latitude %></td>
         <td><%= bus_stop.longitude %></td>
         <td><%= link_to 'Show', bus_stop %></td>
-        <td><%= link_to 'Edit', edit_bus_stop_path(bus_stop) %></td>
-        <td><%= link_to 'Destroy', bus_stop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+        
+          <%= link_to 'Edit', edit_bus_stop_path(bus_stop) %>
+        
+        </td>
+
+        <td>
+        
+          <%= link_to 'Destroy', bus_stop, method: :delete, data: { confirm: 'Are you sure?' } %>
+        
+        </td>
 
 
       </tr>
@@ -40,4 +49,6 @@ Signed in as <%= current_user.email %>. Not you?
 
 <br>
 
-<%= link_to 'New Bus stop', new_bus_stop_path %>
+
+  <%= link_to 'New Bus stop', new_bus_stop_path %>
+
