@@ -9,13 +9,11 @@ Rails.application.routes.draw do
 
   #devise_for :users, controllers: { registrations:"users/registrations"}  
   devise_for :users, :controllers => { :registrations => "users/registrations" }
-  scope "/admin" do
-    resources :users
-  end
+
 
   #devise_for :admins, :controllers => { :registrations => "admins/registrations" }
 
-  resources :users, only: [:index]
+  resources :users#, only: [:index]
   # get 'users/sign_in'
 
   # get 'admins/sign_in'

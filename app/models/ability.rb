@@ -9,10 +9,12 @@ class Ability
          can :manage, :all
        elsif user.moderator?
           can :read, :all
-          can [:create, :update, :destroy], bus_stops
-          can [:create, :update, :destroy], bus_routes
+          can [:create, :edit, :update, :destroy], BusStop
+          can [:create, :edit, :update, :destroy], BusRoute
         elsif user.regular?
-          can :read, :all
+          can :read, [BusStop, BusRoute]
+        else
+            can :read, [BusStop, BusRoute]
        end
     #
     # The first argument to `can` is the action you are giving the user

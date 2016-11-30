@@ -1,6 +1,6 @@
 class RolesController < ApplicationController
-  #load_and_authorize_resource
-  before_action :set_role, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  #before_action :set_role, only: [:show, :edit, :update, :destroy]
   
   # GET /roles
   # GET /roles.json

@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   belongs_to :role
-  before_create :set_default_role
+  after_create :set_default_role
   # has_many :bus_stops
   # has_many :bus_routes
   devise :database_authenticatable, :registerable,
@@ -35,15 +35,15 @@ class User < ActiveRecord::Base
 validates :username, presence: true, length: {maximum: 255}, uniqueness: { case_sensitive: false }, format: { with: /\A[a-zA-Z0-9]*\z/, message: "may only contain letters and numbers." }
   
   def admin?
-   self.role.name == "Admin"
+   !self.role.nil? && self.role.name == "Admin"
   end
 
   def moderator?
-   self.role.name == "Moderator"
+   !self.role.nil? && self.role.name == "Moderator"
   end
   
   def regular?
-   self.role.name == "Regular"
+   !self.role.nil? && self.role.name == "Regular"
   end
 
 

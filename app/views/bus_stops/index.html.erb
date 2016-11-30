@@ -30,14 +30,15 @@ Signed in as <%= current_user.email %>. Not you?
         <td><%= bus_stop.longitude %></td>
         <td><%= link_to 'Show', bus_stop %></td>
         <td>
-        
+        <% if can? :edit, BusStop %>
           <%= link_to 'Edit', edit_bus_stop_path(bus_stop) %>
-        
+        <% end %>
         </td>
 
         <td>
-        
+        <% if can? :destroy, BusStop %>
           <%= link_to 'Destroy', bus_stop, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
         
         </td>
 
@@ -49,6 +50,6 @@ Signed in as <%= current_user.email %>. Not you?
 
 <br>
 
-
-  <%= link_to 'New Bus stop', new_bus_stop_path %>
-
+  <% if can? :create, BusStop %>
+    <%= link_to 'New Bus stop', new_bus_stop_path %>
+  <% end %>

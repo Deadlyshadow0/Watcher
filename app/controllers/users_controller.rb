@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  #load_and_authorize_resource
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  #before_action :set_user, only: [:show, :edit, :update, :destroy]
   
   # GET /users
   # GET /users.json
@@ -27,7 +27,6 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     authorize! :edit, @user
-
   end
 
   # POST /users
@@ -71,6 +70,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   protected
     def needs_password?(user, params)
       params[:password].present?
@@ -88,13 +95,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   # DELETE /users/1.json
-  def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

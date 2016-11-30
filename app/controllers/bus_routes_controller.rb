@@ -1,6 +1,6 @@
 class BusRoutesController < ApplicationController
-  #load_and_authorize_resource
-  before_action :set_bus_route, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  #bfore_action :set_bus_route, only: [:show, :edit, :update, :destroy]
 
   # GET /bus_routes
   # GET /bus_routes.json
