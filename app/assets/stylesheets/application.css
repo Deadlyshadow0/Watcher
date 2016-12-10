@@ -12,4 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
+ *= require bootstrap
  */
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */

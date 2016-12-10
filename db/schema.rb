@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126023530) do
+ActiveRecord::Schema.define(version: 20161201193314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bus_locations", force: :cascade do |t|
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "bus_route_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "bus_locations", ["bus_route_id"], name: "index_bus_locations_on_bus_route_id", using: :btree
 
   create_table "bus_routes", force: :cascade do |t|
     t.string   "name"
@@ -70,6 +80,7 @@ ActiveRecord::Schema.define(version: 20161126023530) do
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "bus_locations", "bus_routes"
   add_foreign_key "match_of_buses", "bus_routes"
   add_foreign_key "match_of_buses", "bus_stops"
   add_foreign_key "users", "roles"

@@ -1,5 +1,5 @@
 
-<h1>Listing Bus Routes</h1>
+<h1>Bus Routes</h1>
 
 <table>
   <thead>
@@ -16,13 +16,24 @@
         <td><%= bus_route.name %></td>
         <td><%= bus_route.number %></td>
         <td><%= link_to 'Show', bus_route %></td>
-        <td><%= link_to 'Edit', edit_bus_route_path(bus_route) %></td>
-        <td><%= link_to 'Destroy', bus_route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+        <% if can? :edit, BusRoute %>
+          <%= link_to 'Edit', edit_bus_route_path(bus_route) %>
+        <% end %>
+        </td>
+
+        <td>
+        <% if can? :destroy, BusRoute %>
+          <%= link_to 'Destroy', bus_route, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Bus route', new_bus_route_path %>
+<% if can? :edit, BusRoute %>
+  <%= link_to 'New Bus route', new_bus_route_path %>
+<% end %>

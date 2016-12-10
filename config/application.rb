@@ -23,5 +23,25 @@ module Watcher
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.assets.paths << Rails.root.join("images")
+    config.assets.precompile = [ '*.js', '*.png', '*.jpg', '*.css']
+
+    # Add fonts path
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
+    # Precompile additional assets
+    config.assets.precompile += %w( .svg .eot .woff .ttf ) 
+
+    @font-face {
+   font-family:'FontAwesome';
+   src:    font-url('fontawesome-webfont.eot');
+   src:    font-url('fontawesome-webfont?#iefix') format('embedded-opentype'),
+   font-url('fontawesome-webfont.woff') format('woff'),
+   font-url('fontawesome-webfont.ttf') format('truetype'),
+   font-url('fontawesome-webfont.svg') format('svg');
+   font-weight:normal;
+   font-style:normal;
+}
   end
 end

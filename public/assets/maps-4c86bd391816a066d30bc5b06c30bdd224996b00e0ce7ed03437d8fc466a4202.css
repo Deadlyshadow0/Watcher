@@ -1,0 +1,12 @@
+/* line 5, /home/ovictorin/Watcher/app/assets/stylesheets/maps.scss */
+#map {
+  height: 100%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+/* line 10, /home/ovictorin/Watcher/app/assets/stylesheets/maps.scss */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

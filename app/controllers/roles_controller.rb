@@ -14,7 +14,7 @@ class RolesController < ApplicationController
     if @role.users.length == 0
       @assosciated_users = "None"
     else
-      @assosciated_users = @role.users.map(&:name).join(", ")
+      @assosciated_users = @role.users.map{ |user| user.username}.join(", ")
     end
   end
 

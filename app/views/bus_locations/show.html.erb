@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @bus_location.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @bus_location.longitude %>
+</p>
+
+<p>
+  <strong>Bus route:</strong>
+  <%= @bus_location.bus_route.name %>
+</p>
+
+<%= link_to 'Edit', edit_bus_location_path(@bus_location) %> |
+<%= link_to 'Back', bus_locations_path %>
